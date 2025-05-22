@@ -15,6 +15,7 @@ dependencies = [
     "fastmcp>=2.3.5",
     "typer>=0.15.4",
     "biofm-eval",
+    "pydantic>=2.11.4",
 ]
 
 [project.scripts]
