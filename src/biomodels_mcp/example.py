@@ -12,7 +12,7 @@ from biomodels_mcp.config import (
     MODEL_PATH, TOKENIZER_PATH, DEFAULT_DATA_DIR, LOGS_DIR,
     DEFAULT_GENE_ANNOTATION_URL, DEFAULT_REFERENCE_GENOME_URL, DEFAULT_VCF_URL
 )
-from biomodels_mcp.models import BioFM
+from biomodels_mcp.biofm import BioFM
 
 app = typer.Typer()
 
@@ -54,7 +54,7 @@ def main(
     
     try:
         # Run the model with provided VCF path or default
-        biofm.fit(vcf_path)
+        biofm.fit(vcf_path, max_variants=1)
         annotated_dataset = biofm.dataset
         embeddings = biofm.embeddings
         typer.echo(f"Processing complete. Processed {annotated_dataset.shape} variants and produced {embeddings[0].shape}, {embeddings[1].shape} embeddings.")
